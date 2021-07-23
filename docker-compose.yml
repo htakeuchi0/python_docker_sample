@@ -3,16 +3,15 @@ services:
     python_docker_sample:
         container_name: 'python_docker_sample'
         user: 1000:1000
-        restart: always
         build:
             context: ./
             args:
                 UID: 1000
-                USERNAME: hiroshi
+                USERNAME: htakeuchi0
                 PYTHONDIR: python_docker_sample
         tty: true
-        working_dir: '/home/hiroshi/python_docker_sample'
+        working_dir: '/home/htakeuchi0/python_docker_sample'
         volumes:
-            - ./sandbox:/home/hiroshi/python_docker_sample/sandbox:Z
-            - ./tests:/home/hiroshi/python_docker_sample/tests:Z
+            - ./sandbox:/home/htakeuchi0/python_docker_sample/sandbox:Z
+            - ./tests:/home/htakeuchi0/python_docker_sample/tests:Z
 

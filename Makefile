@@ -1,13 +1,13 @@
-all: init
-
-init:
-	sudo docker-compose up -d --build
-	sudo docker-compose exec python_docker_sample bash
+bash: build
+	docker-compose exec python_docker_sample bash
 
 test:
-	sudo docker-compose run python_docker_sample python -m unittest tests/test_sample.py
+	@docker-compose run python_docker_sample python -m unittest tests/test_sample.py
 
-clean:
-	sudo docker-compose down --rmi all
+build:
+	docker-compose up -d --build
+
+run:
+	@docker-compose run python_docker_sample python -m sandbox.sample
 	
-.PHONY:	init test clean
+.PHONY:	bash test build run

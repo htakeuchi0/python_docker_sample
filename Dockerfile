@@ -16,9 +16,9 @@ ENV PYTHONDIR=${PYTHONDIR}
 ENV WORKDIR=/home/${USERNAME}/${PYTHONDIR}
 
 # インストール
-RUN apt update && \
-	apt install -y sudo && \
-	apt install -y vim && \
+RUN apt-get update && \
+	apt-get install -y sudo \
+	vim && \
 	pip install --upgrade pip && \
 	pip install --upgrade setuptools
 
