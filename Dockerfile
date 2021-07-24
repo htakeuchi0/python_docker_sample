@@ -16,11 +16,14 @@ ENV PYTHONDIR=${PYTHONDIR}
 ENV WORKDIR=/home/${USERNAME}/${PYTHONDIR}
 
 # インストール
-RUN apt-get update && \
-	apt-get install -y sudo \
-	vim && \
-	pip install --upgrade pip && \
-	pip install --upgrade setuptools
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+	sudo \
+	vim \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
+ && pip install --upgrade pip \
+ && pip install --upgrade setuptools
 
 # Pythonライブラリのインストール
 COPY requirements.txt ${WORKDIR}/requirements.txt
